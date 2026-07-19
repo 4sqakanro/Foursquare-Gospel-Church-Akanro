@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministries - Foursquare Gospel Church, Akanro</title>
+    <link rel="icon" type="image/png" href="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root{--primary-blue:#2563eb;--primary-red:#dc2626;--primary-purple:#9333ea;--primary-yellow:#fbbf24}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow-x:hidden}
+        .navbar{background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));box-shadow:0 4px 6px rgba(0,0,0,.1)}
+        .navbar-brand{font-weight:700;font-size:1.5rem;color:#fff!important}
+        .nav-link{color:rgba(255,255,255,.9)!important;margin:0 10px;transition:all .3s}
+        .nav-link.active,.nav-link:hover{transform:translateY(-2px);color:var(--primary-yellow)!important}
+        .page-header{background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff;padding:80px 0 60px;text-align:center;margin-bottom:50px}
+        .page-header h1{font-size:3rem;font-weight:700;margin-bottom:15px}
+        .page-header p{font-size:1.2rem;opacity:.9}
+        .section-title{font-size:2.5rem;font-weight:700;margin-bottom:40px;position:relative;display:inline-block}
+        .section-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:80px;height:4px;background:linear-gradient(90deg,var(--primary-red),var(--primary-yellow));border-radius:2px}
+        .card-service{border:none;border-radius:15px;transition:all .3s;height:100%;overflow:hidden}
+        .card-service:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.2)}
+        .card-blue{background:linear-gradient(135deg,var(--primary-blue),#1e40af);color:#fff}
+        .card-red{background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff}
+        .card-purple{background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff}
+        .card-yellow{background:linear-gradient(135deg,var(--primary-yellow),#f59e0b);color:#1f2937}
+        .icon-box{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem}
+        .btn-custom{padding:15px 40px;font-size:1.1rem;border-radius:50px;font-weight:700;transition:all .3s}
+        .btn-yellow{background-color:var(--primary-yellow);color:#1f2937;border:none}
+        .btn-yellow:hover{background-color:#f59e0b;transform:scale(1.05);box-shadow:0 10px 20px rgba(251,191,36,.3);color:#1f2937}
+        footer{background:linear-gradient(135deg,#1f2937,#111827);color:#fff;padding:30px 0}
+        .social-icons a{display:inline-block;width:45px;height:45px;background:rgba(255,255,255,.1);border-radius:50%;text-align:center;line-height:45px;margin:0 5px;color:#fff;transition:all .3s;text-decoration:none}
+        .social-icons a:hover{transform:translateY(-5px)}
+        .social-icons a:nth-child(1):hover{background:var(--primary-blue)}
+        .social-icons a:nth-child(2):hover{background:var(--primary-yellow)}
+        .social-icons a:nth-child(3):hover{background:var(--primary-red);color:#1f2937}
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            margin-top: 10px;
+        }
+
+        .dropdown-item {
+            color: rgba(255,255,255,0.9) !important;
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--primary-yellow) !important;
+            padding-left: 25px;
+        }
+
+        .dropdown-toggle-no-arrow::after {
+
+        /* Show dropdown on hover */
+        .navbar .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            margin-top: 0;
+        }
+            margin-left: 5px;
+        }
+                /* Live Stream Button */
+        .btn-livestream {
+            background-color: var(--primary-red);
+            color: white !important;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-livestream:hover {
+            background-color: #b91c1c;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        }
+
+        .live-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\2.png" alt=""> FGC, Akanro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="index.html" id="homeDropdown" role="button" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html#quick-info">Quick Info</a></li>
+                            <li><a class="dropdown-item" href="index.html#welcome">Welcome Home</a></li>
+                            <li><a class="dropdown-item" href="index.html#welcome">Service Times</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="about.html" id="aboutDropdown" role="button" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item" href="about.html#beliefs">What We Believe</a></li>
+                            <li><a class="dropdown-item" href="about.html#pastor">About the Pastor</a></li>
+                            <li><a class="dropdown-item" href="about.html#anthem">Foursquare Anthem</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="services.html" id="servicesDropdown" role="button" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="services.html#special">Special Services</a></li>
+                            <li><a class="dropdown-item" href="services.html#regular">Regular Services</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow active" href="ministries.html" id="ministriesDropdown" role="button" aria-expanded="false">
+                            Ministries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                            <li><a class="dropdown-item" href="ministries.html#nextgen">NextGen Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#children">Children Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#women">Women's Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#men">Men's Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#outreach">Outreach Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#choir">Choir Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="media.html" id="mediaDropdown" role="button" aria-expanded="false">
+                            Media
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="mediaDropdown">
+                            <li><a class="dropdown-item" href="media.html#sermons">Recent Sermons</a></li>
+                            <li><a class="dropdown-item" href="media.html#gallery">Photo Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="events.html" id="eventsDropdown" role="button" aria-expanded="false">
+                            Events
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eventsDropdown">
+                            <li><a class="dropdown-item" href="events.html#calendar">Event Calendar</a></li>
+                            <li><a class="dropdown-item" href="events.html#upcoming">Upcoming Events</a></li>
+                            <li><a class="dropdown-item" href="events.html#special">Special Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="contact.html" id="contactDropdown" role="button" aria-expanded="false">
+                            Contact
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                            <li><a class="dropdown-item" href="contact.html#get-in-touch">Get In Touch</a></li>
+                            <li><a class="dropdown-item" href="contact.html#find-us">Find Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="YOUR_LIVE_STREAM_URL_HERE" target="_blank" class="btn btn-livestream ms-3">
+                    <span class="live-dot"></span> Live Stream
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-hands-helping me-3"></i>Our Ministries</h1>
+            <p>Discover a place to serve, grow, and make a difference</p>
+        </div>
+    </div>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-service card-purple h-100">
+                        <div class="card-body p-4">
+                            <div class="icon-box"><i class="fas fa-users"></i></div>
+                            <h3 class="card-title text-center" id="nextgen">NextGen Ministry</h3>
+                            <p class="card-text">Empowering the next generation with biblical values, life skills, and purpose-driven leadership.</p>
+                            <hr style="border-color:rgba(255,255,255,.3)">
+                            <h5><i class="fas fa-bullseye me-2"></i>Our Focus</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check me-2"></i>Discipleship and mentorship</li>
+                                <li><i class="fas fa-check me-2"></i>Leadership development</li>
+                                <li><i class="fas fa-check me-2"></i>Community outreach</li>
+                                <li><i class="fas fa-check me-2"></i>Fun and fellowship</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-service card-blue h-100">
+                        <div class="card-body p-4">
+                            <div class="icon-box"><i class="fas fa-child"></i></div>
+                            <h3 class="card-title text-center" id="children">Children Ministry</h3>
+                            <p class="card-text">Building a strong foundation of faith in our children through engaging lessons and activities.</p>
+                            <hr style="border-color:rgba(255,255,255,.3)">
+                            <h5><i class="fas fa-bullseye me-2"></i>Our Focus</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check me-2"></i>Age-appropriate Bible teaching</li>
+                                <li><i class="fas fa-check me-2"></i>Character development</li>
+                                <li><i class="fas fa-check me-2"></i>Creative worship</li>
+                                <li><i class="fas fa-check me-2"></i>Safe and caring environment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-service card-red h-100">
+                        <div class="card-body p-4">
+                            <div class="icon-box"><i class="fas fa-female"></i></div>
+                            <h3 class="card-title text-center" id="women">Women's Ministry</h3>
+                            <p class="card-text">Nurturing, equipping, and empowering women to fulfill their God-given potential and purpose.</p>
+                            <hr style="border-color:rgba(255,255,255,.3)">
+                            <h5><i class="fas fa-bullseye me-2"></i>Our Focus</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check me-2"></i>Bible study and prayer</li>
+                                <li><i class="fas fa-check me-2"></i>Fellowship and support</li>
+                                <li><i class="fas fa-check me-2"></i>Life skills workshops</li>
+                                <li><i class="fas fa-check me-2"></i>Community service</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-service card-yellow h-100">
+                        <div class="card-body p-4">
+                            <div class="icon-box"><i class="fas fa-male"></i></div>
+                            <h3 class="card-title text-center" id="men">Men's Ministry</h3>
+                            <p class="card-text">Building godly men who are strong leaders in their homes, churches, and communities.</p>
+                            <hr style="border-color:rgba(0,0,0,.2)">
+                            <h5><i class="fas fa-bullseye me-2"></i>Our Focus</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check me-2"></i>Spiritual growth</li>
+                                <li><i class="fas fa-check me-2"></i>Brotherhood and accountability</li>
+                                <li><i class="fas fa-check me-2"></i>Family leadership</li>
+                                <li><i class="fas fa-check me-2"></i>Service projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-service card-blue h-100">
+                        <div class="card-body p-4">
+                            <div class="icon-box"><i class="fas fa-hands-helping"></i></div>
+                            <h3 class="card-title text-center" id="outreach">Outreach Ministry</h3>
+                            <p class="card-text">Touching lives in our community through acts of love, service, and sharing the Gospel.</p>
+                            <hr style="border-color:rgba(255,255,255,.3)">
+                            <h5><i class="fas fa-bullseye me-2"></i>Our Focus</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check me-2"></i>Community evangelism</li>
+                                <li><i class="fas fa-check me-2"></i>Humanitarian aid</li>
+                                <li><i class="fas fa-check me-2"></i>Prison ministry</li>
+                                <li><i class="fas fa-check me-2"></i>Hospital visitation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card card-service card-purple h-100">
+                        <div class="card-body p-4">
+                            <div class="icon-box"><i class="fas fa-music"></i></div>
+                            <h3 class="card-title text-center" id="choir">Choir Ministry</h3>
+                            <p class="card-text">Leading worship and praise through anointed songs that usher in God's presence.</p>
+                            <hr style="border-color:rgba(255,255,255,.3)">
+                            <h5><i class="fas fa-bullseye me-2"></i>Our Focus</h5>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check me-2"></i>Anointed worship</li>
+                                <li><i class="fas fa-check me-2"></i>Musical excellence</li>
+                                <li><i class="fas fa-check me-2"></i>Choir training</li>
+                                <li><i class="fas fa-check me-2"></i>Special performances</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card card-service card-red">
+                        <div class="card-body text-center p-5">
+                            <div class="icon-box mx-auto"><i class="fas fa-hand-point-right"></i></div>
+                            <h2 class="mb-4">Get Involved</h2>
+                            <p class="lead mb-4">God has given you unique gifts and talents. Discover where you can make a difference and serve alongside fellow believers.</p>
+                            <p class="mb-4">Whether you're passionate about worship, teaching, serving, or outreach, there's a place for you in our ministry family.</p>
+                            <a href="contact.html" class="btn btn-custom btn-yellow">Contact Us to Join a Ministry</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="social-icons mb-3">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/fou1.4208/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UC9r3DnUavcHKNulJ1TCod2w"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2026 Foursquare Gospel Church, Akanro. All Rights Reserved.</p>
+            <p class="mb-0"><small>Building Lives, Touching Hearts, Transforming Communities</small></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Foursquare Gospel Church, Akanro</title>
+    <link rel="icon" type="image/png" href="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root{--primary-blue:#2563eb;--primary-red:#dc2626;--primary-purple:#9333ea;--primary-yellow:#fbbf24}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow-x:hidden}
+        .navbar{background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));box-shadow:0 4px 6px rgba(0,0,0,.1)}
+        .navbar-brand{font-weight:700;font-size:1.5rem;color:#fff!important}
+        .nav-link{color:rgba(255,255,255,.9)!important;margin:0 10px;transition:all .3s}
+        .nav-link.active,.nav-link:hover{transform:translateY(-2px);color:var(--primary-yellow)!important}
+        .page-header{background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff;padding:80px 0 60px;text-align:center;margin-bottom:50px}
+        .page-header h1{font-size:3rem;font-weight:700;margin-bottom:15px}
+        .page-header p{font-size:1.2rem;opacity:.9}
+        .section-title{font-size:2.5rem;font-weight:700;margin-bottom:40px;position:relative;display:inline-block}
+        .section-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:80px;height:4px;background:linear-gradient(90deg,var(--primary-red),var(--primary-yellow));border-radius:2px}
+        .card-service{border:none;border-radius:15px;transition:all .3s;height:100%;overflow:hidden}
+        .card-service:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.2)}
+        .card-blue{background:linear-gradient(135deg,var(--primary-blue),#1e40af);color:#fff}
+        .card-red{background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff}
+        .card-purple{background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff}
+        .icon-box{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem}
+        .calendar-container{background:#fff;border-radius:15px;padding:30px;box-shadow:0 5px 20px rgba(0,0,0,.1)}
+        .calendar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;flex-wrap:wrap;gap:10px}
+        .calendar-header h3{margin:0;color:var(--primary-purple)}
+        .calendar-nav button{background:var(--primary-blue);color:#fff;border:none;padding:10px 20px;border-radius:25px;cursor:pointer;transition:all .3s;margin:0 5px}
+        .calendar-nav button:hover{background:var(--primary-purple);transform:scale(1.05)}
+        .selection-controls{display:flex;gap:10px;align-items:center;width:100%;justify-content:center;margin-top:15px}
+        .selection-controls button{background:var(--primary-purple);color:#fff;border:none;padding:10px 20px;border-radius:25px;cursor:pointer;transition:all .3s;font-size:0.9rem}
+        .selection-controls button:hover{background:var(--primary-blue);transform:scale(1.05)}
+        .selection-controls button:disabled{background:#9ca3af;cursor:not-allowed;transform:none}
+        .selection-info{background:linear-gradient(135deg,rgba(147,51,234,0.1),rgba(37,99,235,0.1));padding:10px 20px;border-radius:20px;font-weight:600;color:var(--primary-purple)}
+        .calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+        .calendar-day-header{text-align:center;font-weight:700;color:var(--primary-purple);padding:10px}
+        .calendar-day{aspect-ratio:1;border:1px solid #e5e7eb;border-radius:10px;padding:10px;text-align:center;cursor:pointer;transition:all .3s;position:relative;user-select:none}
+        .calendar-day:hover{background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(147,51,234,.1));transform:scale(1.05)}
+        .calendar-day.selected{background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff;font-weight:700;border:2px solid var(--primary-blue);transform:scale(1.05)}
+        .calendar-day.has-event{background:linear-gradient(135deg,var(--primary-yellow),#f59e0b);color:#1f2937;font-weight:700;box-shadow:0 4px 10px rgba(251,191,36,.3)}
+        .calendar-day.has-event.selected{background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff}
+        .calendar-day.today{border:2px solid var(--primary-red);font-weight:700}
+        .event-card{background:#fff;border-radius:15px;padding:25px;margin-bottom:20px;box-shadow:0 5px 15px rgba(0,0,0,.1);transition:all .3s;border-left:5px solid var(--primary-blue)}
+        .event-card:hover{transform:translateY(-5px);box-shadow:0 10px 25px rgba(0,0,0,.15)}
+        .event-card.event-red{border-left-color:var(--primary-red)}
+        .event-card.event-purple{border-left-color:var(--primary-purple)}
+        .event-card.event-yellow{border-left-color:var(--primary-yellow)}
+        .event-date{background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff;padding:10px 20px;border-radius:10px;display:inline-block;margin-bottom:15px;font-weight:700}
+        footer{background:linear-gradient(135deg,#1f2937,#111827);color:#fff;padding:30px 0}
+        .social-icons a{display:inline-block;width:45px;height:45px;background:rgba(255,255,255,.1);border-radius:50%;text-align:center;line-height:45px;margin:0 5px;color:#fff;transition:all .3s;text-decoration:none}
+        .social-icons a:hover{transform:translateY(-5px)}
+        .social-icons a:nth-child(1):hover{background:var(--primary-blue)}
+        .social-icons a:nth-child(2):hover{background:var(--primary-yellow)}
+        .social-icons a:nth-child(3):hover{background:var(--primary-red);color:#1f2937}
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            margin-top: 10px;
+        }
+
+        .dropdown-item {
+            color: rgba(255,255,255,0.9) !important;
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--primary-yellow) !important;
+            padding-left: 25px;
+        }
+
+        .dropdown-toggle-no-arrow::after {
+
+        /* Show dropdown on hover */
+        .navbar .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            margin-top: 0;
+        }
+            margin-left: 5px;
+        }
+        .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.6)}
+        .modal-content{background:#fff;margin:10% auto;padding:30px;border-radius:15px;width:90%;max-width:500px;box-shadow:0 10px 40px rgba(0,0,0,.3)}
+        .modal-content h3{color:var(--primary-purple);margin-bottom:20px}
+        .modal-content input{width:100%;padding:12px;border:2px solid #e5e7eb;border-radius:8px;margin-bottom:20px;font-size:1rem}
+        .modal-content input:focus{outline:none;border-color:var(--primary-purple)}
+        .selected-dates-display{background:linear-gradient(135deg,rgba(147,51,234,0.1),rgba(37,99,235,0.1));padding:15px;border-radius:8px;margin-bottom:20px;max-height:150px;overflow-y:auto}
+        .selected-dates-display p{margin:0;color:var(--primary-purple);font-weight:600;margin-bottom:10px}
+        .selected-dates-display .date-pill{display:inline-block;background:var(--primary-purple);color:#fff;padding:5px 12px;border-radius:15px;margin:3px;font-size:0.85rem}
+        .modal-buttons{display:flex;gap:10px;justify-content:flex-end}
+        .modal-buttons button{padding:10px 25px;border:none;border-radius:8px;cursor:pointer;font-weight:600;transition:all .3s}
+        .btn-save{background:var(--primary-blue);color:#fff}
+        .btn-save:hover{background:#1e40af}
+        .btn-cancel{background:#e5e7eb;color:#1f2937}
+        .btn-cancel:hover{background:#d1d5db}
+        .btn-delete{background:var(--primary-red);color:#fff;padding:5px 15px;border:none;border-radius:5px;cursor:pointer;margin-left:10px;font-size:0.85rem}
+        .btn-delete:hover{background:#b91c1c}
+                /* Live Stream Button */
+        .btn-livestream {
+            background-color: var(--primary-red);
+            color: white !important;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-livestream:hover {
+            background-color: #b91c1c;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        }
+
+        .live-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\2.png" alt=""> FGC, Akanro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="index.html" id="homeDropdown" role="button" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html#quick-info">Quick Info</a></li>
+                            <li><a class="dropdown-item" href="index.html#welcome">Welcome Home</a></li>
+                            <li><a class="dropdown-item" href="index.html#welcome">Service Times</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="about.html" id="aboutDropdown" role="button" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item" href="about.html#beliefs">What We Believe</a></li>
+                            <li><a class="dropdown-item" href="about.html#pastor">About the Pastor</a></li>
+                            <li><a class="dropdown-item" href="about.html#anthem">Foursquare Anthem</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="services.html" id="servicesDropdown" role="button" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="services.html#special">Special Services</a></li>
+                            <li><a class="dropdown-item" href="services.html#regular">Regular Services</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="ministries.html" id="ministriesDropdown" role="button" aria-expanded="false">
+                            Ministries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                            <li><a class="dropdown-item" href="ministries.html#nextgen">NextGen Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#children">Children Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#women">Women's Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#men">Men's Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#outreach">Outreach Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#choir">Choir Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="media.html" id="mediaDropdown" role="button" aria-expanded="false">
+                            Media
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="mediaDropdown">
+                            <li><a class="dropdown-item" href="media.html#sermons">Recent Sermons</a></li>
+                            <li><a class="dropdown-item" href="media.html#gallery">Photo Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow active" href="events.html" id="eventsDropdown" role="button" aria-expanded="false">
+                            Events
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eventsDropdown">
+                            <li><a class="dropdown-item" href="events.html#calendar">Event Calendar</a></li>
+                            <li><a class="dropdown-item" href="events.html#upcoming">Upcoming Events</a></li>
+                            <li><a class="dropdown-item" href="events.html#special">Special Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="contact.html" id="contactDropdown" role="button" aria-expanded="false">
+                            Contact
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                            <li><a class="dropdown-item" href="contact.html#get-in-touch">Get In Touch</a></li>
+                            <li><a class="dropdown-item" href="contact.html#find-us">Find Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="YOUR_LIVE_STREAM_URL_HERE" target="_blank" class="btn btn-livestream ms-3">
+                    <span class="live-dot"></span> Live Stream
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-calendar-check me-3"></i>Events Calendar</h1>
+            <p>Join us for upcoming services, programs, and special events</p>
+        </div>
+    </div>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="calendar-container mb-5" id="calendar">
+                <div class="calendar-header">
+                    <button class="calendar-nav" onclick="previousMonth()"><i class="fas fa-chevron-left me-2"></i>Previous</button>
+                    <h3 id="currentMonth"></h3>
+                    <button class="calendar-nav" onclick="nextMonth()">Next<i class="fas fa-chevron-right ms-2"></i></button>
+                </div>
+                
+                <div class="selection-controls">
+                    <span class="selection-info" id="selectionInfo">Click dates to select</span>
+                    <button onclick="openModalForSelected()" id="addEventBtn" disabled>
+                        <i class="fas fa-plus-circle me-2"></i>Add Event to Selected
+                    </button>
+                    <button onclick="clearSelection()">
+                        <i class="fas fa-times-circle me-2"></i>Clear Selection
+                    </button>
+                </div>
+                
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-12"><h2 class="section-title text-center" id="upcoming">Upcoming Events</h2></div>
+            </div>
+
+            <div id="upcomingEventsSection"></div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="event-card">
+                        <span class="event-date"><i class="fas fa-calendar me-2"></i>Every Sunday</span>
+                        <h4 style="color:var(--primary-blue)">Sunday Worship Service</h4>
+                        <p class="mb-2"><i class="fas fa-clock me-2" style="color:var(--primary-purple)"></i><strong>Time:</strong> 8:00 AM - 11:30 AM</p>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt me-2" style="color:var(--primary-red)"></i><strong>Location:</strong> Church Auditorium</p>
+                        <p>Join us every Sunday for powerful worship, inspiring messages, and fellowship with believers. Bring your family and friends!</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="event-card event-red">
+                        <span class="event-date"><i class="fas fa-calendar me-2"></i>Every Tuesday</span>
+                        <h4 style="color:var(--primary-red)">Bible Study</h4>
+                        <p class="mb-2"><i class="fas fa-clock me-2" style="color:var(--primary-purple)"></i><strong>Time:</strong> 6:00 PM - 7:30 PM</p>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt me-2" style="color:var(--primary-red)"></i><strong>Location:</strong> Church Auditorium</p>
+                        <p>Dive deep into God's Word and grow in your understanding of Scripture. Interactive discussions and practical applications.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="event-card event-purple">
+                        <span class="event-date"><i class="fas fa-calendar me-2"></i>Every Monday</span>
+                        <h4 style="color:var(--primary-purple)">Online Prayer Meeting</h4>
+                        <p class="mb-2"><i class="fas fa-clock me-2" style="color:var(--primary-purple)"></i><strong>Time:</strong> 7:30 PM - 8:00 PM</p>
+                        <p class="mb-2"><i class="fas fa-laptop me-2" style="color:var(--primary-blue)"></i><strong>Platform:</strong> Whatsapp/Online</p>
+                        <p>Connect with believers online for powerful prayers and intercession. Prayer changes things!</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="event-card event-yellow">
+                        <span class="event-date"><i class="fas fa-calendar me-2"></i>Monthly</span>
+                        <h4 style="color:var(--primary-yellow)">First Sunday Communion</h4>
+                        <p class="mb-2"><i class="fas fa-clock me-2" style="color:var(--primary-purple)"></i><strong>Time:</strong> During Sunday Service</p>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt me-2" style="color:var(--primary-red)"></i><strong>Location:</strong> Church Auditorium</p>
+                        <p>Join us for Holy Communion on the first Sunday of every month as we remember Christ's sacrifice.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12"><h2 class="section-title text-center" id="special">Special Events</h2></div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card card-service card-blue h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box"><i class="fas fa-star"></i></div>
+                            <h4>Revival Services</h4>
+                            <p>Annual revival meetings with special guest ministers. Dates announced in church.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card card-service card-red h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box"><i class="fas fa-book-open"></i></div>
+                            <h4>Church Year Review (AGMM)</h4>
+                            <p>Annual celebration of God's faithfulness. Review of the church year.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card card-service card-purple h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box"><i class="fas fa-hands-helping"></i></div>
+                            <h4>Community Outreach/ Crusades</h4>
+                            <p>Regular outreach programs to bless our community. Everyone is welcome to participate.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Add Event</h3>
+            <div class="selected-dates-display" id="selectedDatesDisplay"></div>
+            <input type="text" id="eventInput" placeholder="Enter program title">
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-save" onclick="saveEvent()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="social-icons mb-3">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/fou1.4208/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UC9r3DnUavcHKNulJ1TCod2w"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2026 Foursquare Gospel Church, Akanro. All Rights Reserved.</p>
+            <p class="mb-0"><small>Building Lives, Touching Hearts, Transforming Communities</small></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+        let selectedDates = [];
+        let customEvents = {};
+
+        const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+        function loadEvents() {
+            const saved = localStorage.getItem('churchCustomEvents');
+            if (saved) {
+                customEvents = JSON.parse(saved);
+                cleanPastEvents();
+            }
+        }
+
+        function saveEvents() {
+            localStorage.setItem('churchCustomEvents', JSON.stringify(customEvents));
+        }
+
+        function cleanPastEvents() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            let changed = false;
+            for (let dateStr in customEvents) {
+                const eventDate = new Date(dateStr);
+                if (eventDate < today) {
+                    delete customEvents[dateStr];
+                    changed = true;
+                }
+            }
+            if (changed) saveEvents();
+        }
+
+        function toggleDateSelection(dateString) {
+            const index = selectedDates.indexOf(dateString);
+            if (index > -1) {
+                selectedDates.splice(index, 1);
+            } else {
+                selectedDates.push(dateString);
+            }
+            updateSelectionInfo();
+            renderCalendar(currentMonth, currentYear);
+        }
+
+        function updateSelectionInfo() {
+            const info = document.getElementById('selectionInfo');
+            const btn = document.getElementById('addEventBtn');
+            
+            if (selectedDates.length === 0) {
+                info.textContent = 'Click dates to select';
+                btn.disabled = true;
+            } else {
+                info.textContent = `${selectedDates.length} date${selectedDates.length > 1 ? 's' : ''} selected`;
+                btn.disabled = false;
+            }
+        }
+
+        function clearSelection() {
+            selectedDates = [];
+            updateSelectionInfo();
+            renderCalendar(currentMonth, currentYear);
+        }
+
+        function renderCalendar(month, year) {
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            document.getElementById('currentMonth').textContent = monthNames[month] + ' ' + year;
+            
+            const calendarGrid = document.getElementById('calendarGrid');
+            calendarGrid.innerHTML = '';
+            
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day-header';
+                dayHeader.textContent = day;
+                calendarGrid.appendChild(dayHeader);
+            });
+            
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'calendar-day';
+                emptyCell.style.visibility = 'hidden';
+                calendarGrid.appendChild(emptyCell);
+            }
+            
+            const today = new Date();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'calendar-day';
+                dayCell.textContent = day;
+                
+                if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    dayCell.classList.add('today');
+                }
+                
+                const dateString = year + '-' + String(month + 1).padStart(2, '0') + '-' + String(day).padStart(2, '0');
+                
+                if (selectedDates.includes(dateString)) {
+                    dayCell.classList.add('selected');
+                }
+                
+                if (customEvents[dateString]) {
+                    dayCell.classList.add('has-event');
+                    dayCell.title = customEvents[dateString];
+                }
+                
+                const dayOfWeek = new Date(year, month, day).getDay();
+                if (!selectedDates.includes(dateString) && !customEvents[dateString]) {
+                    if (dayOfWeek === 0) dayCell.style.backgroundColor = 'rgba(37,99,235,0.1)';
+                    if (dayOfWeek === 2) dayCell.style.backgroundColor = 'rgba(220,38,38,0.1)';
+                    if (dayOfWeek === 1) dayCell.style.backgroundColor = 'rgba(147,51,234,0.1)';
+                }
+                
+                dayCell.onclick = function() { toggleDateSelection(dateString); };
+                calendarGrid.appendChild(dayCell);
+            }
+            updateUpcomingEvents();
+        }
+
+        function openModalForSelected() {
+            if (selectedDates.length === 0) return;
+            
+            const modal = document.getElementById('eventModal');
+            const input = document.getElementById('eventInput');
+            const display = document.getElementById('selectedDatesDisplay');
+            
+            input.value = '';
+            
+            selectedDates.sort();
+            let html = `<p>${selectedDates.length} date${selectedDates.length > 1 ? 's' : ''} selected:</p>`;
+            selectedDates.forEach(dateStr => {
+                const d = new Date(dateStr);
+                const formatted = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                html += `<span class="date-pill">${formatted}</span>`;
+            });
+            display.innerHTML = html;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+
+        function saveEvent() {
+            const input = document.getElementById('eventInput');
+            const title = input.value.trim();
+            
+            if (!title) {
+                alert('Please enter an event title');
+                return;
+            }
+            
+            selectedDates.forEach(dateStr => {
+                customEvents[dateStr] = title;
+            });
+            
+            saveEvents();
+            clearSelection();
+            renderCalendar(currentMonth, currentYear);
+            closeModal();
+        }
+
+        function deleteEvent(dateStr) {
+            if (confirm('Are you sure you want to delete this event?')) {
+                delete customEvents[dateStr];
+                saveEvents();
+                renderCalendar(currentMonth, currentYear);
+            }
+        }
+
+        function updateUpcomingEvents() {
+            const container = document.getElementById('upcomingEventsSection');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            const upcoming = Object.keys(customEvents)
+                .filter(dateStr => new Date(dateStr) >= today)
+                .sort()
+                .slice(0, 6);
+            
+            if (upcoming.length === 0) {
+                container.innerHTML = `
+                    <div class="row">
+                        <div class="col-lg-6 mx-auto mb-4">
+                            <div class="card card-service card-purple">
+                                <div class="card-body text-center p-5">
+                                    <div class="icon-box mx-auto"><i class="fas fa-calendar-plus"></i></div>
+                                    <h4>No Upcoming Events</h4>
+                                    <p>Select calendar dates above and click "Add Event to Selected"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                return;
+            }
+            
+            const colors = ['', 'event-red', 'event-purple', 'event-yellow'];
+            let html = '<div class="row">';
+            
+            upcoming.forEach((dateStr, index) => {
+                const eventDate = new Date(dateStr);
+                const formatted = eventDate.toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                html += `
+                    <div class="col-lg-6 mb-4">
+                        <div class="event-card ${colors[index % colors.length]}">
+                            <span class="event-date"><i class="fas fa-calendar me-2"></i>${formatted}</span>
+                            <button class="btn-delete" onclick="deleteEvent('${dateStr}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <h4 style="color:var(--primary-${['blue','red','purple','yellow'][index % 4]})">${customEvents[dateStr]}</h4>
+                        </div>
+                    </div>`;
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        function previousMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            renderCalendar(currentMonth, currentYear);
+        }
+
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            renderCalendar(currentMonth, currentYear);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('eventModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        loadEvents();
+        renderCalendar(currentMonth, currentYear);
+    </script>
+</body>
+</html>

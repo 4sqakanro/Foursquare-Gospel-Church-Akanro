@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Foursquare Gospel Church, Akanro</title>
+    <link rel="icon" type="image/png" href="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\2.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root{--primary-blue:#1e40af;--primary-red:#dc2626;--primary-purple:#9333ea;--primary-yellow:#fbbf24}
+        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;overflow-x:hidden}
+        .navbar{background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));box-shadow:0 4px 6px rgba(0,0,0,.1)}
+        .navbar-brand{font-weight:700;font-size:1.5rem;color:#fff!important}
+        .nav-link{color:rgba(255,255,255,.9)!important;margin:0 10px;transition:all .3s}
+        .nav-link.active,.nav-link:hover{transform:translateY(-2px);color:var(--primary-yellow)!important}
+        .page-header{background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff;padding:80px 0 60px;text-align:center;margin-bottom:50px}
+        .page-header h1{font-size:3rem;font-weight:700;margin-bottom:15px}
+        .page-header p{font-size:1.2rem;opacity:.9}
+        .section-title{font-size:2.5rem;font-weight:700;margin-bottom:40px;position:relative;display:inline-block}
+        .section-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:80px;height:4px;background:linear-gradient(90deg,var(--primary-red),var(--primary-yellow));border-radius:2px}
+        .card-service{border:none;border-radius:15px;transition:all .3s;height:100%;overflow:hidden}
+        .card-service:hover{transform:translateY(-10px);box-shadow:0 15px 30px rgba(0,0,0,.2)}
+        .card-blue{background:linear-gradient(135deg,var(--primary-blue),#1e40af);color:#fff}
+        .card-red{background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff}
+        .card-purple{background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff}
+        .card-yellow{background:linear-gradient(135deg,var(--primary-yellow),#f59e0b);color:#1f2937}
+        .icon-box{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem}
+        .join-family-card{background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff;border-radius:15px;padding:40px;box-shadow:0 10px 30px rgba(220,38,38,.3);transition:all .3s}
+        .join-family-card:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(220,38,38,.4)}
+        .btn-custom{padding:15px 40px;font-size:1.1rem;border-radius:50px;font-weight:700;transition:all .3s}
+        .btn-yellow{background-color:var(--primary-yellow);color:#1f2937;border:none}
+        .btn-yellow:hover{background-color:#f59e0b;transform:scale(1.05);box-shadow:0 10px 20px rgba(251,191,36,.3);color:#1f2937}
+        .pastor-image{width:200px;height:200px;border-radius:50%;object-fit:cover;border:5px solid rgba(255,255,255,.4);box-shadow:0 5px 20px rgba(0,0,0,.2)}
+        .bible-plan-preview{width:100%;max-width:400px;margin:0 auto 15px;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,.2);cursor:pointer;transition:all .3s}
+        .bible-plan-preview:hover{transform:scale(1.02);box-shadow:0 5px 15px rgba(0,0,0,.3)}
+        footer{background:linear-gradient(135deg,#1f2937,#111827);color:#fff;padding:30px 0}
+        .social-icons a{display:inline-block;width:45px;height:45px;background:rgba(255,255,255,.1);border-radius:50%;text-align:center;line-height:45px;margin:0 5px;color:#fff;transition:all .3s;text-decoration:none}
+        .social-icons a:hover{transform:translateY(-5px)}
+        .social-icons a:nth-child(1):hover{background:var(--primary-blue)}
+        .social-icons a:nth-child(2):hover{background:var(--primary-yellow)}
+        .social-icons a:nth-child(3):hover{background:var(--primary-red);color:#1f2937}
+
+        /* Dropdown Menu Styles */
+        .dropdown-menu {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            margin-top: 10px;
+        }
+
+        .dropdown-item {
+            color: rgba(255,255,255,0.9) !important;
+            padding: 10px 20px;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--primary-yellow) !important;
+            padding-left: 25px;
+        }
+
+        .dropdown-toggle-no-arrow::after {
+
+        /* Show dropdown on hover */
+        .navbar .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu {
+            margin-top: 0;
+        }
+            margin-left: 5px;
+        }
+                /* Live Stream Button */
+        .btn-livestream {
+            background-color: var(--primary-red);
+            color: white !important;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-livestream:hover {
+            background-color: #b91c1c;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        }
+
+        .live-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\2.png" alt=""> FGC, Akanro</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="index.html" id="homeDropdown" role="button" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                            <li><a class="dropdown-item" href="index.html#quick-info">Quick Info</a></li>
+                            <li><a class="dropdown-item" href="index.html#welcome">Welcome Home</a></li>
+                            <li><a class="dropdown-item" href="index.html#welcome">Service Times</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow active" href="about.html" id="aboutDropdown" role="button" aria-expanded="false">
+                            About
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="about.html#mission">Our Mission</a></li>
+                            <li><a class="dropdown-item" href="about.html#beliefs">What We Believe</a></li>
+                            <li><a class="dropdown-item" href="about.html#pastor">About the Pastor</a></li>
+                            <li><a class="dropdown-item" href="about.html#anthem">Foursquare Anthem</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="services.html" id="servicesDropdown" role="button" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="services.html#special">Special Services</a></li>
+                            <li><a class="dropdown-item" href="services.html#regular">Regular Services</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="ministries.html" id="ministriesDropdown" role="button" aria-expanded="false">
+                            Ministries
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ministriesDropdown">
+                            <li><a class="dropdown-item" href="ministries.html#nextgen">NextGen Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#children">Children Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#women">Women's Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#men">Men's Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#outreach">Outreach Ministry</a></li>
+                            <li><a class="dropdown-item" href="ministries.html#choir">Choir Ministry</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="media.html" id="mediaDropdown" role="button" aria-expanded="false">
+                            Media
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="mediaDropdown">
+                            <li><a class="dropdown-item" href="media.html#sermons">Recent Sermons</a></li>
+                            <li><a class="dropdown-item" href="media.html#gallery">Photo Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="events.html" id="eventsDropdown" role="button" aria-expanded="false">
+                            Events
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="eventsDropdown">
+                            <li><a class="dropdown-item" href="events.html#calendar">Event Calendar</a></li>
+                            <li><a class="dropdown-item" href="events.html#upcoming">Upcoming Events</a></li>
+                            <li><a class="dropdown-item" href="events.html#special">Special Events</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle-no-arrow " href="contact.html" id="contactDropdown" role="button" aria-expanded="false">
+                            Contact
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                            <li><a class="dropdown-item" href="contact.html#get-in-touch">Get In Touch</a></li>
+                            <li><a class="dropdown-item" href="contact.html#find-us">Find Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="YOUR_LIVE_STREAM_URL_HERE" target="_blank" class="btn btn-livestream ms-3">
+                    <span class="live-dot"></span> Live Stream
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-info-circle me-3"></i>About Us</h1>
+            <p>Discover our mission, vision, and the foundation of our faith</p>
+        </div>
+    </div>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 mb-4">
+                    <h2 class="section-title" id="mission">Our Mission</h2>
+                    <p class="lead">We are a vibrant community of believers dedicated to spreading the Gospel of Jesus Christ and transforming lives through His love.</p>
+                    <p>At Foursquare Gospel Church, Akanro, we strive to create an environment where everyone can encounter God's presence, grow in their faith, and discover their purpose.</p>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card card-service card-purple">
+                        <div class="card-body p-4">
+                            <h3 class="text-center mb-4">Our Core Values</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><i class="fas fa-heart me-2"></i><strong>Love:</strong> Demonstrating Christ's love</li>
+                                <li class="mb-3"><i class="fas fa-book-bible me-2"></i><strong>Truth:</strong> Grounded in God's Word</li>
+                                <li class="mb-3"><i class="fas fa-users me-2"></i><strong>Community:</strong> Building relationships</li>
+                                <li class="mb-3"><i class="fas fa-hands-helping me-2"></i><strong>Service:</strong> Serving selflessly</li>
+                                <li><i class="fas fa-dove me-2"></i><strong>Spirit-Led:</strong> Following the Holy Spirit</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-12"><h2 class="section-title text-center" id="beliefs">What We Believe</h2></div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card card-service card-red h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box"><i class="fas fa-cross"></i></div>
+                            <h4>Salvation</h4>
+                            <p>Salvation through faith in Jesus Christ alone.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card card-service card-yellow h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box"><i class="fas fa-fire"></i></div>
+                            <h4>Holy Spirit</h4>
+                            <p>Baptism of the Holy Spirit with power.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card card-service card-blue h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box"><i class="fas fa-hand-holding-medical"></i></div>
+                            <h4>Divine Healing</h4>
+                            <p>Healing through faith in Jesus Christ.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="card card-service card-purple h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="icon-box"><i class="fas fa-cloud"></i></div>
+                            <h4>Second Coming</h4>
+                            <p>Personal return of Jesus Christ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-12"><h2 class="section-title text-center" id="pastor">About the Pastor</h2></div>
+                <div class="col-lg-10 mx-auto">
+                    <div class="card card-service card-blue">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-4 text-center mb-4 mb-md-0">
+                                    <img src="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\Pastors photo2.jpg" alt="Pastor Olusola Olagoke" class="pastor-image">
+                                    <h4 class="mt-3 mb-0">Reverend Olusola Olagoke</h4>
+                                    <p class="mb-0"><em>Senior Pastor</em></p>
+                                </div>
+                                <div class="col-md-8">
+                                    <h4 class="mb-3">Welcome from Our Pastor</h4>
+                                    <p>Reverend Olusola Olagoke has been serving as the Senior Pastor of Foursquare Gospel Church, Akanro since 2012. With a heart for ministry and a passion for reaching souls, Reverend Olusola Olagoke leads our congregation with wisdom, compassion, and dedication to God's Word.</p>
+                                    <p class="mb-0"><strong>Contact Pastor:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2e5d41424f41424f4941454b1c6e49434f4742004d4143">[email&#160;protected]</a>/ +234 802 956 6992</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title text-center" id="anthem">Foursquare Anthem</h2>
+                </div>
+                <div class="col-lg-10 mx-auto">
+                    <div class="card card-service card-yellow">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <div class="icon-box mx-auto" style="background:rgba(31,41,55,.1)">
+                                    <i class="fas fa-music"></i>
+                                </div>
+                            </div>
+                            <div style="background:rgba(31,41,55,.05);padding:30px;border-radius:10px">
+                                <h4 class="text-center mb-4" style="color:var(--primary-blue)"><strong>Verse 1</strong></h4>
+                                <p class="text-center" style="line-height:2;font-size:1.1rem">
+                                    Foursquare we stand for the living word<br>
+                                    For the word of God<br>
+                                    Telling to all the story of Jesus, stem of Jesse's rod<br>
+                                    Man of sorrow and of grief, dying on the tree<br>
+                                    Mighty Redeemer, glorious Saviour<br>
+                                    Jesus of Calvary
+                                </p>
+                                <hr style="border-top:2px solid var(--primary-blue);width:50%;margin:30px auto">
+                                <h4 class="text-center mb-4" style="color:var(--primary-red)"><strong>Chorus</strong></h4>
+                                <p class="text-center" style="line-height:2;font-size:1.1rem;font-weight:500">
+                                    Preach the Foursquare Gospel<br>
+                                    The Foursquare Gospel<br>
+                                    Clear let the Foursquare message ring (Let it ring)<br>
+                                    Jesus only Saviour, Baptizer and Healer<br>
+                                    Jesus the coming King
+                                </p>
+                                <h4 class="text-center mb-4" style="color:var(--primary-blue)"><strong>Verse 2</strong></h4>
+                                <p class="text-center" style="line-height:2;font-size:1.1rem">
+                                    Unfurl your banners and forward go<br>
+                                    Oh ye ransomed host<br>
+                                    Trusting in Jesus Mighty Baptizer<br>
+                                    With the Holy Ghost<br>
+                                    Lion of Judah, King of kings, Lord of lords is He<br>
+                                    Clothing His church with power to witness Leading to victory
+                                </p>
+                                <h4 class="text-center mb-4" style="color:var(--primary-blue)"><strong>Verse 3</strong></h4>
+                                <p class="text-center" style="line-height:2;font-size:1.1rem">
+                                    Catch up your shield oh ye living Church<br>
+                                    Christ of Galilee<br>
+                                    Bore all our sickness, carried our sorrows<br>
+                                    Set the prisoners free<br>
+                                    Lift the fallen, help the faith, dry the weeping eyes<br>
+                                    Come bring your sickness to thy physician, for He is passing by.
+                                </p>
+                                <h4 class="text-center mb-4" style="color:var(--primary-blue)"><strong>Verse 4</strong></h4>
+                                <p class="text-center" style="line-height:2;font-size:1.1rem">
+                                    Lift your eyes, then unto the hills<br>
+                                   Lift your voice and sing<br>
+                                    The cloud of heavens aflame with glory<br>
+                                    greet the coming king<br>
+                                    Swift as wings of eagle’s flight<br>
+                                   shall He come again.
+                                </p>
+                            </div>
+                            <p class="text-center mt-4 mb-0" style="font-style:italic;color:var(--primary-purple)">
+                                <i class="fas fa-heart me-2"></i>Celebrating our identity in Christ
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title text-center">The 22 Tenets of Faith</h2>
+                    <p class="text-center lead mb-4">The foundational beliefs that guide our church and faith</p>
+                </div>
+                <div class="col-12">
+                    <div class="accordion" id="tenetsAccordion">
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#t1" style="background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff">1. The Holy Scriptures</button></h2>
+                            <div id="t1" class="accordion-collapse collapse show" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe the Bible is God-inspired (II Timothy 3:16, 17).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t2" style="background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff">2. The Eternal Godhead</button></h2>
+                            <div id="t2" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe God is triune: Father, Son and Holy Spirit (II Corinthians 13:14).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t3" style="background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff">3. The Fall of Man</button></h2>
+                            <div id="t3" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that man was created in the image of God, but by voluntary disobedience fell from perfection (Romans 5:12, 19).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t4" style="background:linear-gradient(135deg,var(--primary-yellow),#f59e0b);color:#1f2937">4. The Plan of Redemption</button></h2>
+                            <div id="t4" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that while we were yet sinners Christ died for us, signing the pardon of all who believe in Him (John 3:16; Romans 5:8).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t5" style="background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff">5. Salvation Through Grace</button></h2>
+                            <div id="t5" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that we have no righteousness and must come to God pleading the righteousness of Christ (Ephesians 2:8, 9).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t6" style="background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff">6. Repentance & Acceptance</button></h2>
+                            <div id="t6" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that upon sincere repentance, and a whole-hearted acceptance of Christ, we are justified before God (Luke 24:46, 47; II Timothy 2:24-26; I John 1:9).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t7" style="background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff">7. The New Birth</button></h2>
+                            <div id="t7" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that the change which takes place in the heart and life at conversion is a very real one (II Corinthians 5:17; Galatians 2:20).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t8" style="background:linear-gradient(135deg,var(--primary-yellow),#f59e0b);color:#1f2937">8. Daily Christian Life</button></h2>
+                            <div id="t8" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that it is the will of God that we be sanctified daily, growing constantly in the faith (Hebrews 6:1).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t9" style="background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff">9. Baptism & The Lord's Supper</button></h2>
+                            <div id="t9" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that baptism by immersion is an outward sign of an inward work (Matthew 28:19, 20). We believe in the commemoration of the Lord's Supper by the symbolical use of the bread and juice of the vine (I Corinthians 11:24, 25).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t10" style="background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff">10. Baptism of The Holy Spirit</button></h2>
+                            <div id="t10" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that the baptism of the Holy Spirit is to endue the believer with power; and that His incoming is after the same manner as in Bible days (Acts 2:4).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t11" style="background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff">11. The Spirit-Filled Life</button></h2>
+                            <div id="t11" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that it is the will of God that we walk in the Spirit daily (Ephesians 4:30-32).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t12" style="background:linear-gradient(135deg,var(--primary-yellow),#f59e0b);color:#1f2937">12. The Gifts & Fruit of The Holy Spirit</button></h2>
+                            <div id="t12" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that the Holy Spirit has spiritual gifts for the Christian; and that believers should show spiritual fruit as evidence of a Spirit-filled life (I Corinthians 12:1-11; Galatians 5:22, 23).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t13" style="background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff">13. Moderation</button></h2>
+                            <div id="t13" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that the experience and daily walk of the believer should never lead him into extremes of fanaticisms (Philippians 4:5; James 5:19, 20).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t14" style="background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff">14. Divine Healing</button></h2>
+                            <div id="t14" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that divine healing is the power of Christ to heal the sick in answer to the prayer of faith (James 5:14-16).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t15" style="background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff">15. The Second Coming of Christ</button></h2>
+                            <div id="t15" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that the second coming of Christ is personal and imminent (I Thessalonians 4:16, 17).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t16" style="background:linear-gradient(135deg,var(--primary-yellow),#f59e0b);color:#1f2937">16. Church Relationship</button></h2>
+                            <div id="t16" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe it is our sacred duty to identify ourselves with the visible church of Christ (Acts l6:5; Hebrews 10:24, 25).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t17" style="background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff">17. Civil Government</button></h2>
+                            <div id="t17" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that rulers should be upheld at all times except in things opposed to the will of God (Romans 13:1-5).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t18" style="background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff">18. Judgement</button></h2>
+                            <div id="t18" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that all shall stand some day before the judgement seat of God; and there receive eternal life or death (Romans 2:1-16; II Corinthians 5:10).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t19" style="background:linear-gradient(135deg,var(--primary-purple),#7e22ce);color:#fff">19. Heaven</button></h2>
+                            <div id="t19" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that heaven is the glorious eternal home of born-again believers (John 14:1-3; Revelation 7:15-17).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t20" style="background:linear-gradient(135deg,var(--primary-yellow),#f59e0b);color:#1f2937">20. Hell</button></h2>
+                            <div id="t20" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that hell is the place of eternal torment for all who reject Christ as the Saviour (Revelation 20:10-15).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t21" style="background:linear-gradient(135deg,var(--primary-blue),var(--primary-purple));color:#fff">21. Evangelism</button></h2>
+                            <div id="t21" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that soul winning is the most important responsibility of the Church (Acts 1:8; 8:4-8).</div></div>
+                        </div>
+                        <div class="accordion-item mb-3" style="border:none;border-radius:10px;overflow:hidden">
+                            <h2 class="accordion-header"><button class="accordion-button fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#t22" style="background:linear-gradient(135deg,var(--primary-red),#b91c1c);color:#fff">22. Tithes & Offerings</button></h2>
+                            <div id="t22" class="accordion-collapse collapse" data-bs-parent="#tenetsAccordion"><div class="accordion-body">We believe that the method ordained of God for the support and spread of His cause is by giving of tithes and free-will offerings. (Malachi 3:10; II Corinthians 9:6-15).</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="section-title text-center">Give Your Life to Christ</h2>
+                    <p class="text-center lead mb-4">The most important decision you'll ever make</p>
+                </div>
+                <div class="col-lg-8 mx-auto mb-4">
+                    <div class="card" style="background:linear-gradient(135deg,var(--primary-purple),var(--primary-blue));color:#fff;border:none;border-radius:15px">
+                        <div class="card-body p-5">
+                            <h3 class="text-center mb-4"><i class="fas fa-praying-hands me-2"></i>Salvation Prayer</h3>
+                            <div style="background:rgba(255,255,255,.1);padding:30px;border-radius:10px;backdrop-filter:blur(10px)">
+                                <p class="lead text-center mb-4" style="font-style:italic;line-height:2">
+                                    "Dear Lord Jesus,<br>
+                                    I come to You today as a sinner.<br>
+                                    I believe that You died on the cross for my sins<br>
+                                    and rose again on the third day.<br>
+                                    I confess my sins and ask for Your forgiveness.<br>
+                                    Please come into my heart and be my Lord and Savior.<br>
+                                    I surrender my life to You.<br>
+                                    Thank You for saving me.<br>
+                                    In Jesus' name, Amen."
+                                </p>
+                            </div>
+                            <p class="text-center mt-4 mb-0">If you prayed this prayer, please register below so we can celebrate with you!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-10 mx-auto mb-4">
+                    <h3 class="text-center mb-4" style="color:var(--primary-purple)">Recommended Daily Devotional</h3>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card card-service card-red h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="icon-box"><i class="fas fa-heart"></i></div>
+                                    <h4>Grace For Living</h4>
+                                    <p>Inspirational daily devotional that brings God's Word alive in your everyday life.</p>
+                                    <a href="https://foursquare.org.ng/resources/grace_for_living" target="_blank" class="btn btn-light btn-sm">Visit Website</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-10 mx-auto mb-4">
+                    <h3 class="text-center mb-4" style="color:var(--primary-blue)">Bible Reading Plans</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100" style="border:2px solid var(--primary-blue);border-radius:15px">
+                                <div class="card-body p-4 text-center">
+                                    <h4 style="color:var(--primary-blue)"><i class="fas fa-calendar me-2"></i>Regular Year Plan</h4>
+                                    <p class="mb-3">Read the entire Bible in 365 days</p>
+                                    <img src="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\365 Day Bible Reading Plan.jpg" alt="365 Day Bible Reading Plan" class="bible-plan-preview" onclick="viewPlan365()">
+                                    <button class="btn btn-sm w-100" style="background:var(--primary-blue);color:#fff" onclick="downloadPlan365()"><i class="fas fa-download me-2"></i>Download Plan</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100" style="border:2px solid var(--primary-purple);border-radius:15px">
+                                <div class="card-body p-4 text-center">
+                                    <h4 style="color:var(--primary-purple)"><i class="fas fa-calendar-plus me-2"></i>Leap Year Plan</h4>
+                                    <p class="mb-3">Read the entire Bible in 366 days</p>
+                                    <img src="c:\Users\HP PROBOOK G1\Desktop\Updated Church Website\366 Day Bible Reading Plan.jpg" alt="366 Day Bible Reading Plan" class="bible-plan-preview" onclick="viewPlan366()">
+                                    <button class="btn btn-sm w-100" style="background:var(--primary-purple);color:#fff" onclick="downloadPlan366()"><i class="fas fa-download me-2"></i>Download Plan</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>*There is a plan with the daily devotional as well*</p>
+                <div class="col-lg-8 mx-auto">
+                    <div class="card" style="border:none;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,.1)">
+                        <div class="card-body p-4">
+                            <h3 class="text-center mb-4" style="color:var(--primary-red)"><i class="fas fa-hands-praying me-2"></i>Register Your Decision</h3>
+                            <p class="text-center mb-4">If you've given your life to Christ today, we'd love to hear from you and support you in your new journey!</p>
+                            <form id="salvationForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="fullName" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Gender *</label>
+                                        <select class="form-select" id="gender" required>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="phoneNumber" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="emailAddress" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Address </label>
+                                    <textarea class="form-control" id="address" rows="2" ></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Date of Decision *</label>
+                                    <input type="date" class="form-control" id="decisionDate" required>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-custom btn-yellow"><i class="fas fa-check-circle me-2"></i>Submit Registration</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="join-family-card text-center">
+                        <div class="icon-box mx-auto"><i class="fas fa-home"></i></div>
+                        <h2>Join Our Family</h2>
+                        <p class="lead">We welcome everyone to be part of our growing family. Whether you're seeking spiritual growth, fellowship, or a place to call home, our doors are always open.</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-3">
+                                <p class="mb-2"><i class="fas fa-users me-2"></i> Warm and welcoming community</p>
+                                <p class="mb-2"><i class="fas fa-book-bible me-2"></i> Bible-based teachings</p>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <p class="mb-2"><i class="fas fa-hands-praying me-2"></i> Spirit-filled worship</p>
+                                <p class="mb-2"><i class="fas fa-home me-2"></i> A place to belong</p>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn btn-custom btn-yellow mt-3">Get Connected</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="social-icons mb-3">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/fou1.4208/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/UC9r3DnUavcHKNulJ1TCod2w"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2026 Foursquare Gospel Church, Akanro. All Rights Reserved.</p>
+            <p class="mb-0"><small>Building Lives, Touching Hearts, Transforming Communities</small></p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('salvationForm').addEventListener('submit',function(e){
+            e.preventDefault();
+            const name=document.getElementById('fullName').value;
+            alert('Praise God! Welcome to the family, '+name+'! We will contact you soon to celebrate your decision and support you in your new journey with Christ.');
+            this.reset();
+        });
+
+        function viewPlan365(){
+            const newWindow=window.open('','_blank');
+            newWindow.document.write('<html><head><title>365 Day Bible Reading Plan</title></head><body style="margin:0;display:flex;justify-content:center;align-items:center;background:#f3f4f6"><img src="c:\\Users\\HP PROBOOK G1\\Desktop\\Updated Church Website\\365 Day Bible Reading Plan.jpg" style="max-width:100%;height:auto"></body></html>');
+        }
+
+        function viewPlan366(){
+            const newWindow=window.open('','_blank');
+            newWindow.document.write('<html><head><title>366 Day Bible Reading Plan</title></head><body style="margin:0;display:flex;justify-content:center;align-items:center;background:#f3f4f6"><img src="c:\\Users\\HP PROBOOK G1\\Desktop\\Updated Church Website\\366 Day Bible Reading Plan.jpg" style="max-width:100%;height:auto"></body></html>');
+        }
+
+        function downloadPlan365(){
+            const link=document.createElement('a');
+            link.href='c:\\Users\\HP PROBOOK G1\\Desktop\\Updated Church Website\\365 Day Bible Reading Plan.jpg';
+            link.download='365_Day_Bible_Reading_Plan.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        function downloadPlan366(){
+            const link=document.createElement('a');
+            link.href='c:\\Users\\HP PROBOOK G1\\Desktop\\Updated Church Website\\366 Day Bible Reading Plan.jpg';
